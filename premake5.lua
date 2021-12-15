@@ -15,14 +15,17 @@ workspace (ProjectName)
 
 	filter "configurations:Debug"
 		defines { "_DEBUG" }
+		runtime "Debug"
 		symbols "On"
 		
 	filter "configurations:Release"
 		defines { "_NDEBUG" }
+		runtime "Release"
 		optimize "On"
 		
 	filter "configurations:Dist"
 		defines { "_NDEBUG","_DIST" }
+		runtime "Release"
 		optimize "On"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
@@ -50,8 +53,19 @@ project (ProjectName)
 		 "vendor/GLFW/bin/glfw3.lib"
 		,"opengl32.lib"
 	}
+	vpaths {
+		["Headers"] = { "**.h", "**.hpp" },
+		["Sources"] = {"**.c", "**.cpp"},
+		["images"] = {"**.png","**.jpg","**.bmp","**.ppm","**.pgm","**.pbm","**.tga","**.gif","**.ico","**.icns","**.cur","**.xbm","**.xpm"},
+		["shaders"] = {"**.shader","**.frag","**.vert","**.glsl","**.hlsl"},
+		["Docs"] = "**.md",
+	}
 	systemversion "latest"
 	filter "system:windows"
+		postbuildcommands
+		{
+			"{COPY} res/ ../bin/" .. outputdir .. "/%{prj.name}/res/",
+		}
 		defines { "WIN32", "_WINDOWS" }
 
 	filter "system:linux"
@@ -59,5 +73,3 @@ project (ProjectName)
 
 	filter "system:macosx"
 		defines { "MACOSX" }
-
-

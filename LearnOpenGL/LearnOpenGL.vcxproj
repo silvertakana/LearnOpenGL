@@ -142,6 +142,7 @@
       <AdditionalIncludeDirectories>..\vendor\GLFW\include;..\vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -149,6 +150,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>..\vendor\GLFW\bin\glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST res\ (xcopy /Q /E /Y /I res ..\bin\Debug-windows-x86\$(ProjectName)\res &gt; nul) ELSE (xcopy /Q /Y /I res ..\bin\Debug-windows-x86\$(ProjectName)\res &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -158,6 +162,7 @@
       <AdditionalIncludeDirectories>..\vendor\GLFW\include;..\vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -165,6 +170,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>..\vendor\GLFW\bin\glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST res\ (xcopy /Q /E /Y /I res ..\bin\Debug-windows-x86_64\$(ProjectName)\res &gt; nul) ELSE (xcopy /Q /Y /I res ..\bin\Debug-windows-x86_64\$(ProjectName)\res &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -177,6 +185,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -185,6 +194,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>..\vendor\GLFW\bin\glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST res\ (xcopy /Q /E /Y /I res ..\bin\Release-windows-x86\$(ProjectName)\res &gt; nul) ELSE (xcopy /Q /Y /I res ..\bin\Release-windows-x86\$(ProjectName)\res &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -197,6 +209,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -205,6 +218,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>..\vendor\GLFW\bin\glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST res\ (xcopy /Q /E /Y /I res ..\bin\Release-windows-x86_64\$(ProjectName)\res &gt; nul) ELSE (xcopy /Q /Y /I res ..\bin\Release-windows-x86_64\$(ProjectName)\res &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|Win32'">
     <ClCompile>
@@ -217,6 +233,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -225,6 +242,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>..\vendor\GLFW\bin\glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST res\ (xcopy /Q /E /Y /I res ..\bin\Dist-windows-x86\$(ProjectName)\res &gt; nul) ELSE (xcopy /Q /Y /I res ..\bin\Dist-windows-x86\$(ProjectName)\res &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
@@ -237,6 +257,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -245,13 +266,27 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>..\vendor\GLFW\bin\glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST res\ (xcopy /Q /E /Y /I res ..\bin\Dist-windows-x86_64\$(ProjectName)\res &gt; nul) ELSE (xcopy /Q /Y /I res ..\bin\Dist-windows-x86_64\$(ProjectName)\res &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\shader.h" />
+    <ClInclude Include="src\EBO.h" />
+    <ClInclude Include="src\VAO.h" />
+    <ClInclude Include="src\VBO.h" />
+    <ClInclude Include="src\handleFiles.h" />
+    <ClInclude Include="src\handleShader.h" />
+    <ClInclude Include="src\shaderClass.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\EBO.cpp" />
+    <ClCompile Include="src\VAO.cpp" />
+    <ClCompile Include="src\VBO.cpp" />
     <ClCompile Include="src\glad.c" />
+    <ClCompile Include="src\handleFiles.cpp" />
+    <ClCompile Include="src\handleShader.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\shaderClass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\test.shader" />

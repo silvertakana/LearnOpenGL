@@ -1,15 +1,15 @@
-#pragma once
-#include <string>
 #include <fstream>
 #include <sstream>
-std::pair<const std::string, const std::string> loadShader(const char* shaderSource)
+#include "handleShader.h"
+
+std::pair<std::string, std::string> loadShader(const char* shaderSource)
 {
 	std::ifstream shaderFile(shaderSource);
 	std::stringstream data[2];
 	std::string line;
 	enum ShaderTypes
 	{
-		NONE=-1,
+		NONE = -1,
 		VERTEX,
 		FRAGMENT
 	};
