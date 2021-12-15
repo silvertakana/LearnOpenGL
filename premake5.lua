@@ -56,9 +56,9 @@ project (ProjectName)
 	vpaths {
 		["Headers"] = { "**.h", "**.hpp" },
 		["Sources"] = {"**.c", "**.cpp"},
-		["images"] = {"**.png","**.jpg","**.bmp","**.ppm","**.pgm","**.pbm","**.tga","**.gif","**.ico","**.icns","**.cur","**.xbm","**.xpm"},
-		["shaders"] = {"**.shader","**.frag","**.vert","**.glsl","**.hlsl"},
-		["Docs"] = "**.md",
+		["Images"] = {"**.png","**.jpg","**.bmp","**.ppm","**.pgm","**.pbm","**.tga","**.gif","**.ico","**.icns","**.cur","**.xbm","**.xpm"},
+		["Shaders"] = {"**.shader","**.frag","**.vert","**.glsl","**.hlsl"},
+		["Docs"] = {"**.md","ReadMe.**","readme.**","Readme.**","readMe.**"}
 	}
 	systemversion "latest"
 	filter "system:windows"

@@ -14,4 +14,5 @@ public:
 	void Delete();
 private:
 	void Create(const char* vertexShaderSource, const char* fragmentShaderSource);
+	void compileErrors(unsigned int shader, const char* type);
 };

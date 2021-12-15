@@ -1,6 +1,7 @@
 #include "shaderClass.h"
 #include "handleFiles.h"
 #include "handleShader.h"
+#include <iostream>
 
 Shader::Shader(const char* shaderFilePath)
 {
@@ -52,14 +53,45 @@ void Shader::Create(const char* vertexShaderSource, const char* fragmentShaderSo
 		glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
 		//compile the shader
 		glCompileShader(vertexShader);
+		compileErrors(vertexShader, "VERTEX");
 		glCompileShader(fragmentShader);
+		compileErrors(vertexShader, "FRAGMENT");
+
 		//attach the shader to the program
 		glAttachShader(ID, vertexShader);
 		glAttachShader(ID, fragmentShader);
 		//link the program with openGL
 		glLinkProgram(ID);
+		compileErrors(ID, "PROGRAM");
+
 		//delete the unuse shader
 		glDeleteShader(vertexShader);
 		glDeleteShader(fragmentShader);
+	}
+}
+
+void Shader::compileErrors(unsigned int shader, const char* type)
+{
+	// Stores status of compilation
+	GLint hasCompiled;
+	// Character array to store error message in
+	char infoLog[1024];
+	if (type != "PROGRAM")
+	{
+		glGetShaderiv(shader, GL_COMPILE_STATUS, &hasCompiled);
+		if (hasCompiled == GL_FALSE)
+		{
+			glGetShaderInfoLog(shader, 1024, NULL, infoLog);
+			std::cout << "SHADER_COMPILATION_ERROR for:" << type << "\n" << infoLog << std::endl;
+		}
+	}
+	else
+	{
+		glGetProgramiv(shader, GL_LINK_STATUS, &hasCompiled);
+		if (hasCompiled == GL_FALSE)
+		{
+			glGetProgramInfoLog(shader, 1024, NULL, infoLog);
+			std::cout << "SHADER_LINKING_ERROR for:" << type << "\n" << infoLog << std::endl;
+		}
 	}
 }
