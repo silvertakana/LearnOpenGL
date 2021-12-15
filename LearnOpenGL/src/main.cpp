@@ -9,9 +9,6 @@
 
 int main()
 {
-	while(true) {
-		const char* ok = new const char[]("hello");
-	}
 	glfwInit();
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -34,10 +31,7 @@ int main()
 
 	glViewport(0, 0, 500, 500);
 
-	Shader shaderProgram("")
-
-
-
+	Shader shaderProgram("res/shaders/test.shader");
 	GLfloat vertices[] =
 	{
 		-0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f, // Lower left corner
@@ -53,28 +47,17 @@ int main()
 		3, 2, 4,
 		5, 4, 1,
 	};
+	VAO VAO1;
+	VAO1.Bind();
+	VBO VBO1(vertices, sizeof(vertices));
+	EBO EBO1(indicies, sizeof(indicies));
+	VAO1.LinkVBO(VBO1,0);
+	VAO1.Unbind();
+	VBO1.Unbind();
+	EBO1.Unbind();
 
-	GLuint VAO, VBO, EBO;
-	{
-		glGenVertexArrays(1, &VAO);
-		glGenBuffers(1, &EBO);
-
-		glBindVertexArray(VAO);
-
-
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indicies), indicies, GL_STATIC_DRAW);
-
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-		glEnableVertexAttribArray(0);
-
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		glBindVertexArray(0);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-	}
-
-	glUseProgram(shaderProgram);
-	glBindVertexArray(VAO);
+	shaderProgram.Activate();
+	VAO1.Bind();
 	while (!glfwWindowShouldClose(window))
 	{
 		glClearColor(0.149, 0.301, 0.458, 1.0f);
@@ -83,11 +66,6 @@ int main()
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
-
-	glDeleteVertexArrays(1, &VAO);
-	glDeleteBuffers(1, &VBO);
-	glDeleteBuffers(1, &EBO);
-	glDeleteProgram(shaderProgram);
 
 	glfwDestroyWindow(window);
 

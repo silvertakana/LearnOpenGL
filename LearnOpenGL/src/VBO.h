@@ -5,9 +5,9 @@ class VBO
 {
 public:
 	GLuint ID;
-	VBO(GLfloat verticies[], GLsizeiptr size );
+	VBO(GLfloat vertices[], GLsizeiptr size );
+	~VBO() { Delete(); };
 	void Bind();
 	void Unbind();
 	void Delete();   
 };
-
