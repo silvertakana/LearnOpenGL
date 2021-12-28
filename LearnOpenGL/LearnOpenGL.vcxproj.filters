@@ -18,6 +18,9 @@
     <ClInclude Include="src\EBO.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="src\Texture.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
     <ClInclude Include="src\VAO.h">
       <Filter>Headers</Filter>
     </ClInclude>
@@ -33,9 +36,13 @@
     <ClInclude Include="src\shaderClass.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="src\Vertex.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\EBO.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Texture.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="src\VAO.cpp">
@@ -57,6 +64,9 @@
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="src\shaderClass.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stb.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>

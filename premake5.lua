@@ -46,12 +46,14 @@ project (ProjectName)
 		 "%{prj.name}/res/**.**"
 	}
 	includedirs {
-		 "vendor/GLFW/include" 
-		,"vendor/Glad/include"
+		 "vendor/GLFW/include",
+		"vendor/Glad/include",
+		"vendor/stb/include",
+		"vendor/glm/include",
 	}
 	links{
-		 "vendor/GLFW/bin/glfw3.lib"
-		,"opengl32.lib"
+		 "vendor/GLFW/bin/glfw3.lib",
+		 "opengl32.lib"
 	}
 	vpaths {
 		["Headers"] = { "**.h", "**.hpp" },
