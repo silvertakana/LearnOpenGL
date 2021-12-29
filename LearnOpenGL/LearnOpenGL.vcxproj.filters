@@ -37,6 +37,8 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="src\Vertex.h" />
+    <ClInclude Include="src\Camera.h" />
+    <ClInclude Include="src\Engine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\EBO.cpp">
@@ -69,11 +71,15 @@
     <ClCompile Include="src\stb.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\Engine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\test.shader">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="res\shaders\3D.shader" />
+    <None Include="res\shaders\light.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\basic_cube_map.jpg">
@@ -109,5 +115,11 @@
     <Image Include="res\textures\perlin_noise.png">
       <Filter>Images</Filter>
     </Image>
+    <Image Include="res\textures\pop_cat.png" />
+    <Image Include="res\textures\default specular map.png" />
+    <Image Include="res\textures\planks.png" />
+    <Image Include="res\textures\planksSpec.png" />
+    <Image Include="res\textures\metalSpec.png" />
+    <Image Include="res\textures\metal.png" />
   </ItemGroup>
 </Project>

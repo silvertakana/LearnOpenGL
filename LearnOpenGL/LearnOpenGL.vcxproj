@@ -271,7 +271,9 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\EBO.h" />
+    <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\VAO.h" />
     <ClInclude Include="src\VBO.h" />
@@ -281,7 +283,9 @@
     <ClInclude Include="src\Vertex.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\EBO.cpp" />
+    <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\Texture.cpp" />
     <ClCompile Include="src\VAO.cpp" />
     <ClCompile Include="src\VBO.cpp" />
@@ -293,6 +297,8 @@
     <ClCompile Include="src\stb.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\3D.shader" />
+    <None Include="res\shaders\light.shader" />
     <None Include="res\shaders\test.shader" />
   </ItemGroup>
   <ItemGroup>
@@ -301,12 +307,18 @@
     <Image Include="res\images\images.jpg" />
     <Image Include="res\images\silver.png" />
     <Image Include="res\images\skyshere.jpg" />
+    <Image Include="res\textures\metal.png" />
     <Image Include="res\textures\blue_noise.png" />
     <Image Include="res\textures\brick.png" />
     <Image Include="res\textures\caution.png" />
     <Image Include="res\textures\cobble_stone.png" />
+    <Image Include="res\textures\default specular map.png" />
     <Image Include="res\textures\default.png" />
     <Image Include="res\textures\perlin_noise.png" />
+    <Image Include="res\textures\planks.png" />
+    <Image Include="res\textures\planksSpec.png" />
+    <Image Include="res\textures\pop_cat.png" />
+    <Image Include="res\textures\metalSpec.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
