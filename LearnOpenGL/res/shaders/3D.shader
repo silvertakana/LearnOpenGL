@@ -3,22 +3,22 @@
 
 // Positions/Coordinates
 layout(location = 0) in vec3 aPos;
-// Colors
-layout(location = 1) in vec3 aColor;
-// Texture Coordinates
-layout(location = 2) in vec2 aTex;
 // Normals (not necessarily normalized)
-layout(location = 3) in vec3 aNormal;
+layout(location = 1) in vec3 aNormal;
+// Colors
+layout(location = 2) in vec3 aColor;
+// Texture Coordinates
+layout(location = 3) in vec2 aTex;
 
 
+// Outputs the current position for the Fragment Shader
+out vec3 crntPos;
+// Outputs the normal for the Fragment Shader
+out vec3 Normal;
 // Outputs the color for the Fragment Shader
 out vec3 color;
 // Outputs the texture coordinates to the Fragment Shader
 out vec2 texCoord;
-// Outputs the normal for the Fragment Shader
-out vec3 Normal;
-// Outputs the current position for the Fragment Shader
-out vec3 crntPos;
 
 // Imports the camera matrix from the main function
 uniform mat4 camMatrix;
@@ -33,12 +33,12 @@ void main()
 	// Outputs the positions/coordinates of all vertices
 	gl_Position = camMatrix * vec4(crntPos, 1.0);
 
+	// Assigns the normal from the Vertex Data to "Normal"
+	Normal = aNormal;
 	// Assigns the colors from the Vertex Data to "color"
 	color = aColor;
 	// Assigns the texture coordinates from the Vertex Data to "texCoord"
 	texCoord = aTex;
-	// Assigns the normal from the Vertex Data to "Normal"
-	Normal = aNormal;
 }
 
 #shader fragment
@@ -48,18 +48,18 @@ void main()
 out vec4 FragColor;
 
 
+// Imports the current position from the Vertex Shader
+in vec3 crntPos;
+// Imports the normal from the Vertex Shader
+in vec3 Normal;
 // Imports the color from the Vertex Shader
 in vec3 color;
 // Imports the texture coordinates from the Vertex Shader
 in vec2 texCoord;
-// Imports the normal from the Vertex Shader
-in vec3 Normal;
-// Imports the current position from the Vertex Shader
-in vec3 crntPos;
 
 // Gets the Texture Units from the main function
-uniform sampler2D tex0;
-uniform sampler2D tex1;
+uniform sampler2D diffuse0;
+uniform sampler2D specular0;
 // Gets the color of the light from the main function
 uniform vec4 lightColor;
 // Gets the position of the light from the main function
@@ -90,9 +90,9 @@ vec4 pointLight()
 	float specular = specAmount * specularLight;
 
 	// outputs final color
-	return (texture(tex0, texCoord) * (diffuse * inten + ambient) + texture(tex1, texCoord).r * specular * inten) * lightColor;
+	return (texture(diffuse0, texCoord) * (diffuse * inten + ambient) + texture(specular0, texCoord).r * specular * inten) * lightColor;
 
-	//return texture(tex1, texCoord);
+	//return texture(specular0, texCoord);
 }
 vec4 spotLight()
 {
@@ -117,7 +117,7 @@ vec4 spotLight()
 	float inten = clamp((angle - outerCone) / (innerCone - outerCone), 0.f, 1.f);
 
 	// outputs final color
-	return (texture(tex0, texCoord) * (diffuse * inten + ambient) + texture(tex1, texCoord).r * specular * inten) * lightColor;
+	return (texture(diffuse0, texCoord) * (diffuse * inten + ambient) + texture(specular0, texCoord).r * specular * inten) * lightColor;
 }
 vec4 direcLight()
 {
@@ -137,7 +137,7 @@ vec4 direcLight()
 	float specular = specAmount * specularLight;
 
 	// outputs final color
-	return (texture(tex0, texCoord) * (diffuse + ambient) + texture(tex1, texCoord).r * specular) * lightColor;
+	return (texture(diffuse0, texCoord) * (diffuse + ambient) + texture(specular0, texCoord).r * specular) * lightColor;
 }
 
 void main()

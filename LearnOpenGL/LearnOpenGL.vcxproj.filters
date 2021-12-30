@@ -36,9 +36,9 @@
     <ClInclude Include="src\shaderClass.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="src\Vertex.h" />
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\Engine.h" />
+    <ClInclude Include="src\Mesh.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\EBO.cpp">
@@ -73,6 +73,7 @@
     </ClCompile>
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\Engine.cpp" />
+    <ClCompile Include="src\Mesh.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\test.shader">
